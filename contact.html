@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact / Enquire | Omnacare Multidisciplinary Practice</title>
   <meta name="description" content="Get in touch with Omnacare to book an assessment or ask a question. Appointments can be made by phone, email, or WhatsApp.">
-  <link rel="icon" href="data/files/omnacarelogotransparent.png">
+  <link rel="icon" type="image/png" href="data/files/favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,15 +48,12 @@
 
       <div data-reveal>
         <!--
-          NOTE FOR DEV: This is a static site with no backend.
-          Point this form's `action` at a form-handling service
-          (e.g. Formspree, Netlify Forms, Getform) or your own
-          server endpoint so submissions actually get delivered.
-          Client-side validation is handled in js/main.js.
+          This is a static site with no backend: on submit, js/main.js validates
+          the fields and opens WhatsApp with the enquiry pre-filled.
         -->
-        <form id="contact-form" action="" method="POST">
+        <form id="contact-form" novalidate>
           <h3 style="margin-bottom:4px">Get in Touch</h3>
-          <p class="form-note" style="margin-bottom:20px">Fields marked * are required.</p>
+          <p class="form-note" style="margin-bottom:20px">Fields marked * are required. Sending opens WhatsApp with your enquiry ready to send.</p>
           <div id="form-status" class="form-status" role="alert"></div>
 
           <div class="form-grid">
@@ -118,6 +115,21 @@
           </div>
           <p class="form-note">Appointments can be made via Phone, Email, or WhatsApp.</p>
         </div>
+
+        <div class="card" style="margin-top:24px">
+          <h3>Our Practice</h3>
+          <div class="contact-block">
+            <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+            <address style="font-style:normal">K90 Centre, Suite N5B<br>Cnr North Rand &amp; Rondebult Rd<br>Jansen Park, Boksburg, 1459</address>
+          </div>
+          <div class="map-wrap">
+            <iframe title="Map showing Omnacare at K90 Centre, Boksburg" src="https://www.google.com/maps?q=K90+Centre%2C+Cnr+North+Rand+%26+Rondebult+Rd%2C+Jansen+Park%2C+Boksburg+1459&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+          <div class="btn-group" style="margin-top:16px">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=K90+Centre%2C+Cnr+North+Rand+%26+Rondebult+Rd%2C+Jansen+Park%2C+Boksburg+1459" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-diamond-turn-right"></i> Get Directions</a>
+            <a href="https://waze.com/ul?q=K90%20Centre%20Jansen%20Park%20Boksburg&amp;navigate=yes" class="btn btn-secondary" target="_blank" rel="noopener"><i class="fab fa-waze"></i> Open in Waze</a>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -127,6 +139,11 @@
     <div class="container">
       <img class="footer-logo" src="data/files/omnacarelogotransparent.png" alt="Omnacare">
       <div><strong>Omnacare Multidisciplinary Practice</strong></div>
+      <div class="footer-address">
+        <i class="fas fa-map-marker-alt"></i>
+        K90 Centre, Suite N5B, Cnr North Rand &amp; Rondebult Rd, Jansen Park, Boksburg, 1459 &middot;
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=K90+Centre%2C+Cnr+North+Rand+%26+Rondebult+Rd%2C+Jansen+Park%2C+Boksburg+1459" target="_blank" rel="noopener">View on map</a>
+      </div>
       <div class="footer-social">
         <a href="https://www.facebook.com/profile.php?id=61579705359234" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="https://wa.me/27760344131" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>

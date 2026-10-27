@@ -47,6 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
     revealEls.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
+  /* ---- Placeholder for photos that haven't been uploaded yet ---- */
+  document.querySelectorAll('.card__media img').forEach(function (img) {
+    function markEmpty() { img.parentElement.classList.add('card__media--empty'); }
+    if (img.complete && img.naturalWidth === 0) markEmpty();
+    else img.addEventListener('error', markEmpty);
+  });
+
   /* ---- Contact form validation ---- */
   var form = document.getElementById('contact-form');
   if (form) {
@@ -72,14 +79,25 @@ document.addEventListener('DOMContentLoaded', function () {
         emailField.style.borderColor = '#b3261e';
       }
 
+      e.preventDefault();
       if (missing.length) {
-        e.preventDefault();
         statusBox.textContent = 'Please check the following: ' + missing.join(', ') + '.';
         statusBox.className = 'form-status is-visible form-status--error';
         statusBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
       }
-      // If validation passes, the form submits normally to whatever
-      // endpoint is set in the form's action attribute (see comment in HTML).
+
+      // No backend on this static site, so hand the enquiry to WhatsApp.
+      var f = form.elements;
+      var text = 'Hi Omnacare, my name is ' + f.full_name.value.trim() +
+        '.\nE-mail: ' + f.email.value.trim() +
+        '\nPhone: ' + f.phone.value.trim() +
+        '\nSubject: ' + f.subject.value.trim() +
+        '\n\n' + f.message.value.trim();
+      window.open('https://wa.me/27760344131?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      statusBox.textContent = 'WhatsApp has opened with your enquiry \u2014 just press send. You can also e-mail info@omnacare.co.za.';
+      statusBox.className = 'form-status is-visible form-status--success';
+      form.reset();
     });
   }
 
